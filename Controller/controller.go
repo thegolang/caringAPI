@@ -73,8 +73,9 @@ func Proxy(w http.ResponseWriter, r *http.Request) {
 		}
 
 	} else {
+		w.WriteHeader(http.StatusBadRequest)
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode("User request is unauthorized")
+		json.NewEncoder(w).Encode("Bad request")
 	}
 
 }
